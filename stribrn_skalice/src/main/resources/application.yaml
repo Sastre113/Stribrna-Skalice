@@ -1,0 +1,34 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: stribrn_skalice
+
+  datasource:
+    url: jdbc:h2:mem:aldea_db;DB_CLOSE_DELAY=-1;MODE=PostgreSQL;
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+    defer-datasource-initialization: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto:
+
+  # Indica a Spring Boot que siempre ejecute los scripts de inicialización.
+  sql:
+    init:
+      mode: always
+      data-locations: classpath:/db/data.sql
+      schema-locations: classpath:/db/schema.sql
